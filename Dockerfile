@@ -45,9 +45,6 @@ RUN $INST_SCRIPTS/chrome.sh
 RUN $INST_SCRIPTS/xfce_ui.sh
 ADD ./src/common/xfce/ $HOME/
 
-### Install Tor
-RUN apt install torbrowser-launcher -y
-
 
 
 ### configure startup
@@ -55,9 +52,13 @@ RUN $INST_SCRIPTS/libnss_wrapper.sh
 ADD ./src/common/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME 
 
-RUN echo "gpg --homedir "\$HOME/.local/share/torbrowser/gnupg_homedir/" --refresh-keys --keyserver pgp.mit.edu keyserver.ubuntu.com pool.sks-keyservers.net" >> /headless/Desktop/debug.txt
-
 USER 1000
+
+### Install Tor
+RUN wget https://www.torproject.org/dist/torbrowser/9.5/tor-browser-linux64-9.5_en-US.tar.xz &&\
+    tar xf tor-browser-linux64-9.5_en-US.tar.xz -C /headless/
+
+
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 CMD ["--wait"]
