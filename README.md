@@ -13,6 +13,7 @@ Go to `http://127.0.0.1:6901` in your browser and use the password `vncpassword`
 
 Open the Tor browser.
 
+![the tor browser and a terminal showing information about the container](example.png "Example")
 
 ## Shoutout 
 
