@@ -18,6 +18,7 @@ EOF_FF
     > $ff_def/user.js
 }
 
+
 #copy from org/sakuli/common/bin/installer_scripts/linux/install_firefox_portable.sh
 function instFF() {
     if [ ! "${1:0:1}" == "" ]; then
